@@ -28,9 +28,10 @@ model Barbershop {
   phones             String[]
   barbershopServices BarbershopService[]
 
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  Booking   Booking[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  bookings Booking[]
 
   @@map("barbershops")
 }
