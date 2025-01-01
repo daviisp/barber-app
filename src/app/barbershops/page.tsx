@@ -14,7 +14,7 @@ const BarbershopsPage = async ({
 
   return (
     <>
-      <section>
+      <section className="mx-5">
         <Header />
         <SearchBarber />
         <div className="py-6">
