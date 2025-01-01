@@ -4,7 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { Barbershop } from "@prisma/client";
 
 export const getBarbershops = async (name: string): Promise<Barbershop[]> => {
-  const barbershops = await prisma.barbershop.findMany({
+  return await prisma.barbershop.findMany({
     where: {
       name: {
         contains: name,
@@ -12,6 +12,4 @@ export const getBarbershops = async (name: string): Promise<Barbershop[]> => {
       },
     },
   });
-
-  return barbershops;
 };
