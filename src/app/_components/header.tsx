@@ -38,7 +38,7 @@ export const Header = async () => {
             <MenuIcon />
           </Button>
         </SheetTrigger>
-        <SheetContent className="bg-[#141518] border-none w-[350px]">
+        <SheetContent className="bg-[#141518] border-none w-4/4">
           <SheetHeader>
             <SheetTitle className="text-white text-left">Menu</SheetTitle>
           </SheetHeader>
