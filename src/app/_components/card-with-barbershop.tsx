@@ -11,7 +11,7 @@ export const CardWithBarbershop = ({ barbershop }: CardWithBarbershopProps) => {
   return (
     <Card
       key={barbershop.id}
-      className="w-[167px] bg-[#1a1b1f] text-white px-1 py-1"
+      className="w-[167px] bg-[#1a1b1f] text-white px-1 py-2"
     >
       <CardContent className="pl-0">
         <div className="relative w-full h-[171px]">
@@ -29,7 +29,9 @@ export const CardWithBarbershop = ({ barbershop }: CardWithBarbershopProps) => {
           {barbershop.address}
         </p>
         <div className="flex justify-center mt-3">
-          <Button className="bg-[#26272b] mt-auto text-sm">Reservar</Button>
+          <Button className="bg-[#26272b] mt-auto text-sm w-full mx-3">
+            Reservar
+          </Button>
         </div>
       </CardContent>
     </Card>
