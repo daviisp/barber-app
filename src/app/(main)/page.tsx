@@ -5,6 +5,7 @@ import { WelcomeUser } from "./_components/welcome.user";
 import Image from "next/image";
 import { quickSearchOptions } from "@/constants/quick-search-options";
 import { Card, CardContent } from "@/components/ui/card";
+import { Title } from "../_components/title";
 
 const Home = () => {
   return (
@@ -39,9 +40,7 @@ const Home = () => {
         />
       </div>
 
-      <h3 className="font-bold text-xs mt-6 mb-3 text-[#838896] uppercase">
-        Agendamentos
-      </h3>
+      <Title text="Agendamentos" />
       <Card className="bg-[#1b1a1f] text-white">
         <CardContent className="grid grid-cols-[2fr,1fr]">
           <div className="space-y-3 pb-3">
