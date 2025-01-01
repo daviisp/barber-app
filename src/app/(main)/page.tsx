@@ -8,22 +8,24 @@ import { RecommendedAndPopularBarbershops } from "./_components/recommended-and-
 const Home = () => {
   return (
     <>
-      <Header />
-      <div className="mt-6">
-        <WelcomeUser />
-      </div>
-      <div className="mt-6">
-        <SearchBarber />
-      </div>
-      <div className="mt-6">
-        <RenderQuickOptions />
-      </div>
-      <div className="mt-6">
-        <BookingItem />
-      </div>
-      <div className="mt-6">
-        <RecommendedAndPopularBarbershops />
-      </div>
+      <section className="mx-5">
+        <Header />
+        <div className="mt-6">
+          <WelcomeUser />
+        </div>
+        <div className="mt-6">
+          <SearchBarber />
+        </div>
+        <div className="mt-6">
+          <RenderQuickOptions />
+        </div>
+        <div className="mt-6">
+          <BookingItem />
+        </div>
+        <div className="mt-6">
+          <RecommendedAndPopularBarbershops />
+        </div>
+      </section>
     </>
   );
 };
