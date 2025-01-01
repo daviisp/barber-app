@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Barbershop } from "@prisma/client";
 import Image from "next/image";
+import Link from "next/link";
 
 interface CardWithBarbershopProps {
   barbershop: Barbershop;
@@ -29,8 +30,8 @@ export const CardWithBarbershop = ({ barbershop }: CardWithBarbershopProps) => {
           {barbershop.address}
         </p>
         <div className="flex justify-center mt-3">
-          <Button className="bg-[#26272b] mt-auto text-sm w-full mx-3">
-            Reservar
+          <Button className="bg-[#26272b] mt-auto text-sm w-full mx-3" asChild>
+            <Link href={`/barbershops/${barbershop.id}`}>Reservar</Link>
           </Button>
         </div>
       </CardContent>
