@@ -20,7 +20,7 @@ export const BookingItem = () => {
               <div className="flex items-center gap-2">
                 <Image
                   alt="teate"
-                  src="/image-barber.png"
+                  src="/barber.png"
                   width={20}
                   height={20}
                   className="rounded-full"
