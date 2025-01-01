@@ -1,4 +1,3 @@
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -7,15 +6,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { quickSearchOptions } from "@/constants/quick-search-options";
-import { auth } from "@/lib/auth";
-import {
-  Calendar,
-  CircleChevronRight,
-  HomeIcon,
-  LogIn,
-  MenuIcon,
-} from "lucide-react";
+import { MenuIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -25,13 +16,15 @@ import { Navigation } from "./navigation";
 export const Header = async () => {
   return (
     <header className="flex justify-between items-center py-6">
-      <Image
-        src="/logo.svg"
-        width={130}
-        height={22}
-        alt="Logo da FSW"
-        unoptimized
-      />
+      <Link href="/">
+        <Image
+          src="/logo.svg"
+          width={130}
+          height={22}
+          alt="Logo da FSW"
+          unoptimized
+        />
+      </Link>
       <Sheet>
         <SheetTrigger asChild>
           <Button className="bg-transparent hover:bg-transparent">
