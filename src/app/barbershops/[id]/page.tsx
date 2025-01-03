@@ -77,7 +77,9 @@ const BarbershopPage = async ({
         </div>
         {barbershop.barbershopServices.map((service) => (
           <CardWithServicesOfBarbershop
-            service={{ ...service, price: Number(service.price) }}
+            barbershop={barbershop}
+            service={service}
+            key={service.id}
           />
         ))}
       </div>
