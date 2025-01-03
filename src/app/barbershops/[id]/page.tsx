@@ -9,6 +9,7 @@ import { Title } from "@/app/_components/title";
 import { PhonesOfBarbershop } from "./_components/phones-of-barbershop";
 import { CardWithServicesOfBarbershop } from "./_components/card-with-services-of-barbershop";
 import { notFound } from "next/navigation";
+import { auth } from "@/lib/auth";
 
 const BarbershopPage = async ({
   params,
@@ -22,6 +23,8 @@ const BarbershopPage = async ({
   if (!barbershop) {
     return notFound();
   }
+
+  const session = await auth();
 
   return (
     <section>
@@ -80,6 +83,7 @@ const BarbershopPage = async ({
             barbershop={barbershop}
             service={service}
             key={service.id}
+            user={session?.user}
           />
         ))}
       </div>

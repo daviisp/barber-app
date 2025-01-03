@@ -19,6 +19,8 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { getAvailableTimes } from "../../_data-access/get-available-times";
+import { Session } from "next-auth";
+import { signIn } from "@/lib/auth";
 
 const AVAILABLE_TIMES = [
   "08:00",
@@ -45,11 +47,13 @@ const AVAILABLE_TIMES = [
 interface CardWithServicesBarbershopProps {
   service: BarbershopService;
   barbershop: Barbershop;
+  user: Session["user"] | null;
 }
 
 export const CardWithServicesOfBarbershop = ({
   service,
   barbershop,
+  user,
 }: CardWithServicesBarbershopProps) => {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
   const [availableTimes, setAvailableTimes] =
@@ -154,10 +158,14 @@ export const CardWithServicesOfBarbershop = ({
                   />
                 </div>
                 <div className="border border-[#26272b] my-6" />
-                <div className="flex gap-2 overflow-x-auto mx-5">
+                <div className="flex gap-2 overflow-x-auto mx-5 [&::-webkit-scrollbar]:hidden">
                   {availableTimes.map((availableTime, index) => (
                     <Button
-                      className="bg-transparent"
+                      className={`${
+                        hour === availableTime
+                          ? "bg-[#8162ff]"
+                          : "bg-transparent"
+                      } hover:bg-transparent`}
                       key={index}
                       onClick={() => setHour(availableTime)}
                     >
@@ -165,6 +173,8 @@ export const CardWithServicesOfBarbershop = ({
                     </Button>
                   ))}
                 </div>
+                <div className="border border-[#26272b] my-6 !mx-0" />
+
                 {selectedDate && hour && (
                   <div className="mx-5">
                     <div className="bg-[#1a1b1f] p-2">
@@ -194,10 +204,12 @@ export const CardWithServicesOfBarbershop = ({
                         </div>
                       </div>
                     </div>
+
                     <div className="w-full rounded-xl mt-[50px] mb-6">
                       <Button
                         className="bg-[#8162ff] w-full font-semibold"
                         onClick={handleCreateBooking}
+                        disabled={!user}
                       >
                         Confirmar
                       </Button>

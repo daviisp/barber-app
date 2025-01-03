@@ -25,7 +25,7 @@ export const Navigation = () => {
           className="gap-3 w-full justify-start py-3 px-4 text-sm"
           variant="ghost"
         >
-          <Link href="/">
+          <Link href="/bookings">
             <Calendar />
             Agendamentos
           </Link>

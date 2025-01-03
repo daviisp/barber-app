@@ -5,7 +5,7 @@ import { Navigation } from "./navigation";
 
 export const SheetContentMenuUser = () => {
   return (
-    <SheetContent className="bg-[#141518] border-none w-4/4">
+    <SheetContent className="bg-[#141518] border-none px-5 pt-4 overflow-y-auto w-4/4">
       <SheetHeader>
         <SheetTitle className="text-white text-left">Menu</SheetTitle>
       </SheetHeader>
