@@ -1,17 +1,9 @@
 import { Button } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { Sheet, SheetTrigger } from "@/components/ui/sheet";
 import { MenuIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { UserInfo } from "./user-info";
-import { Navigation } from "./navigation";
 import { SheetContentMenuUser } from "./sheet-content-menu-user";
 
 export const Header = async () => {
