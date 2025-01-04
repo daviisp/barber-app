@@ -30,9 +30,12 @@ const Home = async () => {
             {bookings.confirmedBookings.map((booking) => (
               <BookingItem
                 key={booking.id}
+                bookingId={booking.id}
                 barbershopName={booking.barbershop.name}
                 serviceName={booking.barbershopService.name}
                 barbershopAddress={booking.barbershop.address}
+                barbershopPhones={booking.barbershop.phones}
+                servicePrice={Number(booking.barbershopService.price)}
                 barbershopImageUrl={booking.barbershop.imageUrl}
                 date={booking.date}
               />
