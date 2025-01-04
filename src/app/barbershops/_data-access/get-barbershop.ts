@@ -12,5 +12,15 @@ export const getBarbershop = async (id: string) => {
     },
   });
 
-  return barbershop!;
+  if (!barbershop) return null;
+
+  const barbershopWithFormattedPrices = {
+    ...barbershop,
+    barbershopServices: barbershop.barbershopServices.map((service) => ({
+      ...service,
+      price: service.price.toNumber(),
+    })),
+  };
+
+  return barbershopWithFormattedPrices;
 };

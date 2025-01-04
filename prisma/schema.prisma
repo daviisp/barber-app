@@ -100,6 +100,7 @@ model BarbershopService {
   name         String
   price        Decimal    @db.Decimal(10, 2)
   imageUrl     String
+  description  String
   barbershopId String
   barbershop   Barbershop @relation(fields: [barbershopId], references: [id])
   bookings     Booking[]

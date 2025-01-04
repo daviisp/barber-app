@@ -45,7 +45,9 @@ const AVAILABLE_TIMES = [
 ];
 
 interface CardWithServicesBarbershopProps {
-  service: BarbershopService;
+  service: Omit<BarbershopService, "price"> & {
+    price: number;
+  };
   barbershop: Barbershop;
   user: Session["user"] | null;
 }
@@ -138,7 +140,7 @@ export const CardWithServicesOfBarbershop = ({
               {new Intl.NumberFormat("pt-BR", {
                 style: "currency",
                 currency: "BRL",
-              }).format(Number(service.price))}
+              }).format(service.price)}
             </p>
             <Sheet open={modalIsOpen} onOpenChange={setModalIsOpen}>
               <SheetTrigger asChild>
@@ -196,7 +198,7 @@ export const CardWithServicesOfBarbershop = ({
                             {new Intl.NumberFormat("pt-BR", {
                               style: "currency",
                               currency: "BRL",
-                            }).format(Number(service.price))}
+                            }).format(service.price)}
                           </p>
                           <p>
                             {format(selectedDate, "dd 'de' MMMM", {
