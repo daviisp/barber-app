@@ -16,6 +16,8 @@ const BarbershopPage = async ({
 }: {
   params: Promise<{ id: string }>;
 }) => {
+  const session = await auth();
+
   const id = (await params).id;
 
   const barbershop = await getBarbershop(id);
@@ -23,8 +25,6 @@ const BarbershopPage = async ({
   if (!barbershop) {
     return notFound();
   }
-
-  const session = await auth();
 
   return (
     <section>

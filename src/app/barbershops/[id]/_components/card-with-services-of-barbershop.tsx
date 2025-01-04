@@ -55,6 +55,8 @@ export const CardWithServicesOfBarbershop = ({
   barbershop,
   user,
 }: CardWithServicesBarbershopProps) => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
   const [availableTimes, setAvailableTimes] =
     useState<string[]>(AVAILABLE_TIMES);
@@ -74,6 +76,8 @@ export const CardWithServicesOfBarbershop = ({
         barbershopServiceId: service.id,
         date: bookingDate,
       });
+
+      setModalIsOpen(false);
 
       setAvailableTimes((prev) => {
         return prev.filter((time) => time !== hour);
@@ -136,7 +140,7 @@ export const CardWithServicesOfBarbershop = ({
                 currency: "BRL",
               }).format(Number(service.price))}
             </p>
-            <Sheet>
+            <Sheet open={modalIsOpen} onOpenChange={setModalIsOpen}>
               <SheetTrigger asChild>
                 <Button className="bg-[#26272B] text-sm">Reservar</Button>
               </SheetTrigger>

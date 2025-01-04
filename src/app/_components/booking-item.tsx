@@ -179,16 +179,21 @@ export const BookingItem = ({
                     Cancelar Reserva
                   </Button>
                 </AlertDialogTrigger>
-                <AlertDialogContent>
+                <AlertDialogContent className="bg-[#141518] border-none">
                   <AlertDialogHeader>
                     <AlertDialogTitle>Você tem certeza?</AlertDialogTitle>
                   </AlertDialogHeader>
-                  <AlertDialogDescription>
-                    Você tem certeza que deseja excluir o agendamento? Essa ação
-                    não pode ser desfeita.
+                  <AlertDialogDescription className="text-center text-gray-400">
+                    Você tem certeza que deseja excluir o agendamento? Esta ação
+                    não poderá ser desfeita.
                   </AlertDialogDescription>
-                  <AlertDialogCancel>Cancelar</AlertDialogCancel>
-                  <AlertDialogAction onClick={handleConfirmationDeleteBooking}>
+                  <AlertDialogCancel className="bg-[#26272b] border-none">
+                    Cancelar
+                  </AlertDialogCancel>
+                  <AlertDialogAction
+                    onClick={handleConfirmationDeleteBooking}
+                    className="bg-[#ef4444] hover:bg-[#ef4444]"
+                  >
                     Confirmar
                   </AlertDialogAction>
                 </AlertDialogContent>
