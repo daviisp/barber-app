@@ -96,24 +96,34 @@ export const CardWithServicesOfBarbershop = ({
     const fetchAvailableTimes = async () => {
       if (!selectedDate) return;
 
-      const startOfDay = new Date(selectedDate);
-      startOfDay.setHours(0, 0, 0, 0);
-
-      const endOfDay = new Date(selectedDate);
-      endOfDay.setHours(23, 59, 59, 999);
+      const today = new Date();
+      const currentTime = today.getHours() * 60 + today.getMinutes(); // Tempo atual em minutos
 
       const bookings = await getAvailableTimes({
         selectedDate,
         barbershopId: barbershop.id,
         barbershopServiceId: service.id,
       });
+
       const bookedTimes = bookings.map((booking) =>
         format(new Date(booking.date), "HH:mm")
       );
 
-      setAvailableTimes((prevTimes) =>
-        prevTimes.filter((time) => !bookedTimes.includes(time))
-      );
+      setAvailableTimes(() => {
+        return AVAILABLE_TIMES.filter((time) => {
+          const [hours, minutes] = time.split(":").map(Number);
+          const timeInMinutes = hours * 60 + minutes;
+
+          if (
+            today.toDateString() === selectedDate.toDateString() &&
+            timeInMinutes <= currentTime
+          ) {
+            return false;
+          }
+
+          return !bookedTimes.includes(time);
+        });
+      });
     };
 
     fetchAvailableTimes();
@@ -140,7 +150,7 @@ export const CardWithServicesOfBarbershop = ({
               {new Intl.NumberFormat("pt-BR", {
                 style: "currency",
                 currency: "BRL",
-              }).format(service.price)}
+              }).format(Number(service.price))}
             </p>
             <Sheet open={modalIsOpen} onOpenChange={setModalIsOpen}>
               <SheetTrigger asChild>
@@ -198,7 +208,7 @@ export const CardWithServicesOfBarbershop = ({
                             {new Intl.NumberFormat("pt-BR", {
                               style: "currency",
                               currency: "BRL",
-                            }).format(service.price)}
+                            }).format(Number(service.price))}
                           </p>
                           <p>
                             {format(selectedDate, "dd 'de' MMMM", {
