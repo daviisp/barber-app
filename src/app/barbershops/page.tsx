@@ -33,9 +33,11 @@ const BarbershopsPage = async ({
             Não encontramos nenhum resultado para "{barbershopName}"
           </p>
         ) : (
-          barbershops.map((barbershop) => (
-            <CardWithBarbershop barbershop={barbershop} key={barbershop.id} />
-          ))
+          <div className="flex gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden">
+            {barbershops.map((barbershop) => (
+              <CardWithBarbershop barbershop={barbershop} key={barbershop.id} />
+            ))}
+          </div>
         )}
       </section>
     </>
