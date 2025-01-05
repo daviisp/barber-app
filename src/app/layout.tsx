@@ -23,8 +23,8 @@ export default function RootLayout({
         className={`${inter.className} h-screen antialiased bg-[#141518] text-white  flex flex-col`}
       >
         <p className="hidden md:block text-center text-lg p-4 bg-yellow-200 border border-yellow-500 text-yellow-800 rounded-md my-4">
-          Esse aplicativo ainda não possui versão para desktops! No futuro, essa
-          modalidade estará disponível!
+          Atualmente esse aplicativo só possui versão para dispositivos móveis.
+          Futuramente, a versão para desktops estará disponível!
         </p>
         <main className="md:hidden flex-1">{children}</main>
         <div className="md:hidden">
