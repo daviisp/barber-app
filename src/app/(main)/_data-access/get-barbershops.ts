@@ -8,7 +8,7 @@ export const getRecommendBarbershops = async (): Promise<Barbershop[]> => {
     orderBy: { name: "asc" },
   });
 
-  return barbershops.slice(0, 3);
+  return barbershops.slice(0, 6);
 };
 
 export const getPopularBarbershops = async (): Promise<Barbershop[]> => {
@@ -16,5 +16,5 @@ export const getPopularBarbershops = async (): Promise<Barbershop[]> => {
     orderBy: { address: "asc" },
   });
 
-  return barbershops.slice(0, 3);
+  return barbershops.slice(0, 6);
 };

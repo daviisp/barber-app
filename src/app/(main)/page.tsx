@@ -3,28 +3,46 @@ import { SearchBarber } from "./_components/search-barber";
 import { WelcomeUser } from "./_components/welcome.user";
 import { RenderQuickOptions } from "./_components/render-quick-options";
 import { BookingItem } from "../_components/booking-item";
-import { RecommendedAndPopularBarbershops } from "./_components/recommended-and-popular-barbershops";
 import { getBookingsByUser } from "../bookings/_data-access/get";
 import { auth } from "@/lib/auth";
+import { RecommendedBarbershops } from "./_components/recommended-barbershops";
+import { PopularBarbershops } from "./_components/popular-barbershops";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { getRecommendBarbershops } from "./_data-access/get-barbershops";
+import { CardWithBarbershop } from "../_components/card-with-barbershop";
 
 const Home = async () => {
   const session = await auth();
-
+  const recommendedBarbershops = await getRecommendBarbershops();
   const bookings = session?.user?.id ? await getBookingsByUser() : null;
 
   return (
     <>
       <section className="mx-5">
         <Header />
-        <div className="mt-6">
+        <div className="mt-6 md:hidden">
           <WelcomeUser />
         </div>
-        <div className="mt-6">
+        <div className="mt-6 md:hidden">
           <SearchBarber />
         </div>
-        <div className="mt-6">
+        <div className="mt-6 md:hidden">
           <RenderQuickOptions />
         </div>
+        <div className="hidden md:flex justify-between gap-8 px-32 pt-16">
+          <div className="space-y-8 min-w-[300px] max-w-[400px] flex-1">
+            <WelcomeUser />
+            <SearchBarber />
+          </div>
+          <RecommendedBarbershops />
+        </div>
+
         {bookings && (
           <div className="mt-6 flex gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden">
             {bookings.confirmedBookings.map((booking) => (
@@ -43,8 +61,9 @@ const Home = async () => {
           </div>
         )}
 
-        <div className="mt-6">
-          <RecommendedAndPopularBarbershops />
+        <div className="mt-6 md:hidden space-y-6">
+          <RecommendedBarbershops />
+          <PopularBarbershops />
         </div>
       </section>
     </>
