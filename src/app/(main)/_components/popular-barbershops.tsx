@@ -28,8 +28,7 @@ export const PopularBarbershops = async () => {
           <Title text="Populares" />
           <Carousel className="w-full max-w-6xl mt-4">
             <CarouselContent className="flex gap-5">
-              {" "}
-              {popularBarbershops.sort().map((barbershop) => (
+              {popularBarbershops.map((barbershop) => (
                 <CarouselItem
                   key={barbershop.id}
                   className="flex-none w-[calc((100%-80px)/5)]"
@@ -48,16 +47,18 @@ export const PopularBarbershops = async () => {
           <Title text="Mais visitados" />
           <Carousel className="w-full max-w-6xl mt-4">
             <CarouselContent className="flex gap-5">
-              {popularBarbershops.map((barbershop) => (
-                <CarouselItem
-                  key={barbershop.id}
-                  className="flex-none w-[calc((100%-80px)/5)]"
-                >
-                  <div className="p-0">
-                    <CardWithBarbershop barbershop={barbershop} />
-                  </div>
-                </CarouselItem>
-              ))}
+              {popularBarbershops
+                .sort((a, b) => a.name.localeCompare(b.name))
+                .map((barbershop) => (
+                  <CarouselItem
+                    key={barbershop.id}
+                    className="flex-none w-[calc((100%-80px)/5)]"
+                  >
+                    <div className="p-0">
+                      <CardWithBarbershop barbershop={barbershop} />
+                    </div>
+                  </CarouselItem>
+                ))}
             </CarouselContent>
             <CarouselPrevious className="text-black" />
             <CarouselNext className=" text-black" />
