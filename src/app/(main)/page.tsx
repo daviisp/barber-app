@@ -7,7 +7,6 @@ import { getBookingsByUser } from "../bookings/_data-access/get";
 import { auth } from "@/lib/auth";
 import { RecommendedBarbershops } from "./_components/recommended-barbershops";
 import { PopularBarbershops } from "./_components/popular-barbershops";
-import { Title } from "../_components/title";
 
 const Home = async () => {
   const session = await auth();
@@ -26,7 +25,7 @@ const Home = async () => {
         <div className="mt-6 md:hidden">
           <RenderQuickOptions />
         </div>
-        <div className="hidden md:flex justify-between gap-8 mx-32 pt-16">
+        <div className="hidden md:flex justify-between gap-8 mx-32 pt-[65px]">
           <div className="space-y-8 min-w-[300px] max-w-[400px] flex-1">
             <WelcomeUser />
             <SearchBarber />

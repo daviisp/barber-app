@@ -138,6 +138,7 @@ export const CardWithServicesOfBarbershop = ({
             fill
             alt={service.name}
             className="rounded-xl object-cover"
+            unoptimized
           />
         </div>
         <div>

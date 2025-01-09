@@ -173,31 +173,33 @@ export const BookingItem = ({
 
             <div className="pt-[141px] flex justify-between">
               <Button className="px-7 py-2">Voltar</Button>
-              <AlertDialog>
-                <AlertDialogTrigger asChild>
-                  <Button variant="destructive" className="px-4 py-2">
-                    Cancelar Reserva
-                  </Button>
-                </AlertDialogTrigger>
-                <AlertDialogContent className="bg-[#141518] border-none">
-                  <AlertDialogHeader>
-                    <AlertDialogTitle>Você tem certeza?</AlertDialogTitle>
-                  </AlertDialogHeader>
-                  <AlertDialogDescription className="text-center text-gray-400">
-                    Você tem certeza que deseja excluir o agendamento? Esta ação
-                    não poderá ser desfeita.
-                  </AlertDialogDescription>
-                  <AlertDialogCancel className="bg-[#26272b] border-none">
-                    Cancelar
-                  </AlertDialogCancel>
-                  <AlertDialogAction
-                    onClick={handleConfirmationDeleteBooking}
-                    className="bg-[#ef4444] hover:bg-[#ef4444]"
-                  >
-                    Confirmar
-                  </AlertDialogAction>
-                </AlertDialogContent>
-              </AlertDialog>
+              {status === "Confirmado" && (
+                <AlertDialog>
+                  <AlertDialogTrigger asChild>
+                    <Button variant="destructive" className="px-4 py-2">
+                      Cancelar Reserva
+                    </Button>
+                  </AlertDialogTrigger>
+                  <AlertDialogContent className="bg-[#141518] border-none">
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>Você tem certeza?</AlertDialogTitle>
+                    </AlertDialogHeader>
+                    <AlertDialogDescription className="text-center text-gray-400">
+                      Você tem certeza que deseja excluir o agendamento? Esta
+                      ação não poderá ser desfeita.
+                    </AlertDialogDescription>
+                    <AlertDialogCancel className="bg-[#26272b] border-none">
+                      Cancelar
+                    </AlertDialogCancel>
+                    <AlertDialogAction
+                      onClick={handleConfirmationDeleteBooking}
+                      className="bg-[#ef4444] hover:bg-[#ef4444]"
+                    >
+                      Confirmar
+                    </AlertDialogAction>
+                  </AlertDialogContent>
+                </AlertDialog>
+              )}
             </div>
           </div>
         </div>
