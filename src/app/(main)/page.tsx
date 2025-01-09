@@ -26,7 +26,7 @@ const Home = async () => {
         <div className="mt-6 md:hidden">
           <RenderQuickOptions />
         </div>
-        <div className="hidden md:flex justify-between gap-8 px-32 pt-16">
+        <div className="hidden md:flex justify-between gap-8 mx-32 pt-16">
           <div className="space-y-8 min-w-[300px] max-w-[400px] flex-1">
             <WelcomeUser />
             <SearchBarber />

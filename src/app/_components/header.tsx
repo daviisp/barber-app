@@ -33,15 +33,17 @@ export const Header = async () => {
           <SheetContentMenuUser />
         </Sheet>
       </header>
-      <header className="hidden md:flex justify-between items-center px-32 py-8">
+      <header className="hidden md:flex justify-between items-center mx-32  py-8">
         <div>
-          <Image
-            src="/logo.svg"
-            alt="Logo da FSW Barber"
-            width={130}
-            height={22}
-            unoptimized
-          />
+          <Link href="/">
+            <Image
+              src="/logo.svg"
+              alt="Logo da FSW Barber"
+              width={130}
+              height={22}
+              unoptimized
+            />
+          </Link>
         </div>
         <div className="flex items-center gap-6">
           <Button className="gap-2 rounded-xl" variant="ghost" asChild>

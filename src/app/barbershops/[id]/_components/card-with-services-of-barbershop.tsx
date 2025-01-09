@@ -216,7 +216,7 @@ export const CardWithServicesOfBarbershop = ({
                             })}
                           </p>
                           <p>{hour}</p>
-                          <p>Barbearia Pimenta</p>
+                          <p>{barbershop.name}</p>
                         </div>
                       </div>
                     </div>

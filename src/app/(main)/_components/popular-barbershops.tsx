@@ -23,7 +23,7 @@ export const PopularBarbershops = async () => {
         ))}
       </div>
 
-      <div className="hidden md:flex flex-col gap-10 mx-32 pt-[104px]">
+      <div className="hidden md:flex flex-col mx-32 gap-10 pt-[104px]">
         <div>
           <Title text="Populares" />
           <Carousel className="w-full max-w-6xl mt-4">
