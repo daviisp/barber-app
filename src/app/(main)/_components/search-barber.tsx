@@ -37,7 +37,7 @@ export const SearchBarber = () => {
   const router = useRouter();
 
   const onSubmit = (data: FormSchema) => {
-    router.push(`/barbershops?name=${data.barberName}`);
+    router.push(`/barbershops?barbershopName=${data.barberName}`);
   };
 
   return (

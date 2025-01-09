@@ -9,10 +9,8 @@ const BarbershopsPage = async ({
 }: {
   searchParams: Promise<{ barbershopName?: string; serviceName?: string }>;
 }) => {
-  const [barbershopName, serviceName] = await Promise.all([
-    (await searchParams).barbershopName,
-    (await searchParams).serviceName,
-  ]);
+  const barbershopName = (await searchParams).barbershopName;
+  const serviceName = (await searchParams).serviceName;
 
   const barbershops = barbershopName
     ? await getBarbershops(barbershopName)
@@ -22,10 +20,12 @@ const BarbershopsPage = async ({
 
   return (
     <>
-      <section className="mx-5">
+      <section className="mx-5 md:mx-0">
         <Header />
-        <SearchBarber />
-        <div className="py-6">
+        <div className="mx-5 md:mx-32">
+          <SearchBarber />
+        </div>
+        <div className="py-6 md:mx-32">
           <p className="uppercase text-[#838896] text-xs">
             Resultados para "{barbershopName ? barbershopName : serviceName}"
           </p>
@@ -35,7 +35,7 @@ const BarbershopsPage = async ({
             Não encontramos nenhum resultado para "{barbershopName}"
           </p>
         ) : (
-          <div className="flex gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden">
+          <div className="flex gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden md:mx-32">
             {barbershops.map((barbershop) => (
               <CardWithBarbershop barbershop={barbershop} key={barbershop.id} />
             ))}
