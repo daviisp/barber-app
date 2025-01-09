@@ -7,20 +7,11 @@ import { getBookingsByUser } from "../bookings/_data-access/get";
 import { auth } from "@/lib/auth";
 import { RecommendedBarbershops } from "./_components/recommended-barbershops";
 import { PopularBarbershops } from "./_components/popular-barbershops";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import { getRecommendBarbershops } from "./_data-access/get-barbershops";
-import { CardWithBarbershop } from "../_components/card-with-barbershop";
+import { Title } from "../_components/title";
 
 const Home = async () => {
   const session = await auth();
-  const recommendedBarbershops = await getRecommendBarbershops();
-  const bookings = session?.user?.id ? await getBookingsByUser() : null;
+  const bookings = session?.user?.id && (await getBookingsByUser());
 
   return (
     <>
@@ -43,8 +34,12 @@ const Home = async () => {
           <RecommendedBarbershops />
         </div>
 
+        <div className="hidden md:flex pb-[104px]">
+          <PopularBarbershops />
+        </div>
+
         {bookings && (
-          <div className="mt-6 flex gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden">
+          <div className="md:hidden mt-6 flex gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden">
             {bookings.confirmedBookings.map((booking) => (
               <BookingItem
                 key={booking.id}

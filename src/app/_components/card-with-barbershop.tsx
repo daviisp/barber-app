@@ -12,7 +12,7 @@ export const CardWithBarbershop = ({ barbershop }: CardWithBarbershopProps) => {
   return (
     <Card
       key={barbershop.id}
-      className="w-[167px] bg-[#1a1b1f] text-white px-1 py-2"
+      className="w-[167px] md:w-[240px] bg-[#1a1b1f] text-white px-1 py-2"
     >
       <CardContent className="pl-0">
         <div className="relative w-full h-[171px]">

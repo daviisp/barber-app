@@ -15,7 +15,6 @@ export const RecommendedBarbershops = async () => {
 
   return (
     <>
-      {/* Mobile: Lista horizontal scrollável */}
       <div className="mt-6 flex flex-col gap-3 md:hidden">
         <Title text="Recomendados" />
         <div className="flex gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden">
@@ -25,7 +24,6 @@ export const RecommendedBarbershops = async () => {
         </div>
       </div>
 
-      {/* Desktop: Carousel */}
       <div className="hidden md:block">
         <Title text="Recomendados" />
         <Carousel className="w-full max-w-3xl mt-4">
