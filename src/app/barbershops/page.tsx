@@ -7,10 +7,12 @@ import { getServices } from "./_data-access/get-services";
 const BarbershopsPage = async ({
   searchParams,
 }: {
-  searchParams: Promise<{ name?: string; serviceName?: string }>;
+  searchParams: Promise<{ barbershopName?: string; serviceName?: string }>;
 }) => {
-  const barbershopName = (await searchParams).name;
-  const serviceName = (await searchParams).serviceName;
+  const [barbershopName, serviceName] = await Promise.all([
+    (await searchParams).barbershopName,
+    (await searchParams).serviceName,
+  ]);
 
   const barbershops = barbershopName
     ? await getBarbershops(barbershopName)

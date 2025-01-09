@@ -62,10 +62,16 @@ export const BookingItem = ({
   return (
     <Sheet>
       <SheetTrigger className="text-left" asChild>
-        <Card className="bg-[#1b1a1f] text-white min-w-[250px]">
+        <Card className="bg-[#1b1a1f] text-white min-w-[250px] md:min-w-[444px] mb-2.5">
           <CardContent className="grid grid-cols-[2fr,1fr]">
             <div className="space-y-3 pb-3">
-              <Button className="text-xs bg-[#221c3d] text-[#8162ff] mt-3 py-0.5 px-2">
+              <Button
+                className={`text-xs mt-3 py-0.5 px-2 rounded-full ${
+                  status === "Confirmado"
+                    ? "bg-[#221c3d] text-[#8162ff]"
+                    : "bg-[#26272b] text-[#838896]"
+                }`}
+              >
                 {status}
               </Button>
               <div>
@@ -94,48 +100,55 @@ export const BookingItem = ({
           </CardContent>
         </Card>
       </SheetTrigger>
-      <SheetContent className="w-10/12 bg-[#141518] border-none overflow-y-auto pb-4">
+      <SheetContent className="w-10/12 lg:w-11/12 bg-[#141518] border-none overflow-y-auto pb-4">
         <SheetHeader className="mx-5 pt-6">
           <SheetTitle className="text-left text-white">
             Informações da Reserva
           </SheetTitle>
         </SheetHeader>
         <div className="border border-[#26272b] my-6 !mx-0" />
-        <div className="mx-5">
-          <div className="relative h-[180px] w-full">
-            <Image
-              src="/map.png"
-              fill
-              alt="Mapa da barbearia"
-              className="object-cover rounded-xl"
-            />
-            <div className="pt-[88px] flex justify-center">
-              <div className="absolute mb-6">
-                <Card className="bg-[#1a1b1f] py-3 px-1 rounded-md flex justify-center">
-                  <CardContent className="flex pl-0  px-3 items-center gap-3">
-                    <Image
-                      src={barbershopImageUrl}
-                      width={48}
-                      height={48}
-                      className="rounded-xl object-contain"
-                      alt={barbershopName}
-                    />
-                    <div className="flex flex-col gap-1">
-                      <h3 className="text-xs pb-1 font-semibold text-white">
-                        {barbershopName}
-                      </h3>
-                      <p className="text-xs text-white">{barbershopAddress}</p>
-                    </div>
-                  </CardContent>
-                </Card>
+        <div>
+          <div className="mx-5">
+            <div className="relative h-[180px] w-full">
+              <Image
+                src="/map.png"
+                fill
+                alt="Mapa da barbearia"
+                className="object-cover rounded-xl"
+              />
+              <div className="pt-[88px] flex justify-center">
+                <div className="absolute mb-6">
+                  <Card className="bg-[#1a1b1f] py-3 px-1 rounded-md flex justify-center">
+                    <CardContent className="flex pl-0  px-3 items-center gap-3">
+                      <Image
+                        src={barbershopImageUrl}
+                        width={48}
+                        height={48}
+                        className="rounded-xl object-contain"
+                        alt={barbershopName}
+                      />
+                      <div className="flex flex-col gap-1">
+                        <h3 className="text-xs pb-1 font-semibold text-white">
+                          {barbershopName}
+                        </h3>
+                        <p className="text-xs text-white">
+                          {barbershopAddress}
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
               </div>
             </div>
           </div>
           <div className="mt-6">
-            <Button className="bg-[#221C3D] text-[#8162FF] text-sm px-2 py-0.5 mb-3.5 rounded-full">
-              {status}
-            </Button>
-            <Card className="bg-[#1a1b1f] py-2 ">
+            <div className="mx-5">
+              <Button className="bg-[#221C3D] text-[#8162FF] text-sm px-2 py-0.5  rounded-full">
+                {status}
+              </Button>
+            </div>
+            <div className="border border-[#26272b] my-6" />
+            <Card className="bg-[#1a1b1f] py-2 mx-5">
               <CardContent className="pl-0 px-2">
                 <div className="flex items-center justify-between text-white">
                   <div className="space-y-3 text-[#838896] text-sm">
@@ -164,14 +177,15 @@ export const BookingItem = ({
                 </div>
               </CardContent>
             </Card>
-            <div className="pt-5 space-y-3">
+            <div className="border border-[#26272b] my-6" />
+            <div className="pt-5 space-y-3 mx-5 ">
               {barbershopPhones &&
                 barbershopPhones.map((phone, index) => (
                   <PhonesOfBarbershop phone={phone} key={index} />
                 ))}
             </div>
-
-            <div className="pt-[141px] flex justify-between">
+            <div className="border border-[#26272b] mt-6" />
+            <div className="pt-[100px] flex justify-between px-5">
               <Button className="px-7 py-2">Voltar</Button>
               {status === "Confirmado" && (
                 <AlertDialog>
@@ -182,7 +196,9 @@ export const BookingItem = ({
                   </AlertDialogTrigger>
                   <AlertDialogContent className="bg-[#141518] border-none">
                     <AlertDialogHeader>
-                      <AlertDialogTitle>Você tem certeza?</AlertDialogTitle>
+                      <AlertDialogTitle className="text-center">
+                        Você tem certeza?
+                      </AlertDialogTitle>
                     </AlertDialogHeader>
                     <AlertDialogDescription className="text-center text-gray-400">
                       Você tem certeza que deseja excluir o agendamento? Esta
