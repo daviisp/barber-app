@@ -108,7 +108,7 @@ const BarbershopPage = async ({
           </div>
         </div>
       </section>
-      <section className="md:block">
+      <section className="hidden md:block">
         <Header />
         <div className="mx-32 grid grid-cols-[2fr,1fr] gap-10">
           <div>

@@ -130,7 +130,7 @@ const BookingsPage = async () => {
                 />
               ))
             ) : (
-              <p>Você não tem nenhum horário confirmado.</p>
+              <p>Você não tem nenhum horário finalizado.</p>
             )}
           </div>
         </div>
